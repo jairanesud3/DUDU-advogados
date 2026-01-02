@@ -9,12 +9,12 @@ export const Stats: React.FC = () => {
           
           <RevealOnScroll>
              <div className="relative p-10 border border-white/5 hover:border-white/10 transition-colors duration-500 flex flex-col items-center justify-center">
-                {/* Usando items-baseline para alinhamento tipográfico perfeito na base */}
-                <div className="flex items-baseline justify-center mb-4 leading-none">
+                {/* Flex container with items-baseline for perfect alignment */}
+                <div className="flex items-baseline justify-center mb-4 leading-none gap-2">
                   <span className="text-6xl md:text-8xl font-serif text-white tracking-tighter">
                      R$ 40
                   </span>
-                  <span className="text-gold text-3xl md:text-5xl font-serif ml-2">
+                  <span className="text-gold text-3xl md:text-5xl font-serif">
                      Mi
                   </span>
                 </div>
@@ -26,11 +26,11 @@ export const Stats: React.FC = () => {
 
           <RevealOnScroll delay={0.2}>
              <div className="relative p-10 border border-white/5 hover:border-white/10 transition-colors duration-500 flex flex-col items-center justify-center">
-                <div className="flex items-baseline justify-center mb-4 leading-none">
+                <div className="flex items-baseline justify-center mb-4 leading-none gap-2">
                   <span className="text-6xl md:text-8xl font-serif text-white tracking-tighter">
                      150
                   </span>
-                  <span className="text-gold text-3xl md:text-5xl font-serif ml-1">
+                  <span className="text-gold text-3xl md:text-5xl font-serif">
                      +
                   </span>
                 </div>

@@ -1,74 +1,59 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
 import { RevealOnScroll } from './RevealOnScroll';
-import { ServiceItemProps } from '../types';
+import { Building2, Gavel, FileCheck } from 'lucide-react';
 
-const ServiceItem: React.FC<ServiceItemProps> = ({ number, title, description }) => (
-  <div 
-    className="group border-b border-white/10 py-12 hover:bg-white/5 transition-colors duration-500 cursor-pointer"
-    onClick={() => alert(`Demonstração: Detalhes sobre ${title}`)}
-  >
-    <div className="max-w-[1800px] mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-baseline justify-between gap-6">
-      
-      {/* Left: Number & Title */}
-      <div className="md:w-1/2 flex items-baseline gap-8">
-        <span className="text-white/30 font-serif text-lg">{number}</span>
-        <h3 className="text-3xl font-serif text-white group-hover:translate-x-4 transition-transform duration-500">
-          {title}
-        </h3>
-      </div>
-
-      {/* Right: Description & Arrow */}
-      <div className="md:w-1/2 flex items-center justify-between gap-8">
-        <p className="text-gray-500 font-sans font-light leading-relaxed max-w-md group-hover:text-gray-300 transition-colors">
-          {description}
-        </p>
-        <ArrowRight className="text-white w-6 h-6 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500" />
-      </div>
-      
-    </div>
-  </div>
-);
+const services = [
+  {
+    icon: <Building2 className="w-8 h-8 text-gold mb-6" />,
+    title: "Incorporações & Aquisições",
+    description: "Estruturação jurídica completa para grandes empreendimentos imobiliários e due diligence para aquisição de terrenos."
+  },
+  {
+    icon: <Gavel className="w-8 h-8 text-gold mb-6" />,
+    title: "Leilões de Imóveis",
+    description: "Assessoria especializada para arrematação segura, análise de riscos processuais e desocupação ágil do imóvel."
+  },
+  {
+    icon: <FileCheck className="w-8 h-8 text-gold mb-6" />,
+    title: "Regularização Fundiária",
+    description: "Soluções complexas para imóveis irregulares, usucapião extrajudicial e retificação de áreas urbanas e rurais."
+  }
+];
 
 export const Services: React.FC = () => {
-  const services = [
-    {
-      number: "01",
-      title: "Leilões de Alto Padrão",
-      description: "Assessoria completa pré e pós-arrematação. Análise de nulidades processuais e desocupação ágil."
-    },
-    {
-      number: "02",
-      title: "Incorporações Imobiliárias",
-      description: "Estruturação jurídica de empreendimentos. SPEs, SCPs e Patrimônio de Afetação."
-    },
-    {
-      number: "03",
-      title: "Blindagem Patrimonial",
-      description: "Proteção de ativos familiares e empresariais através de holdings e estruturas societárias robustas."
-    },
-    {
-      number: "04",
-      title: "Due Diligence Avançada",
-      description: "Investigação profunda de riscos em aquisições de fazendas, terrenos e imóveis comerciais."
-    }
-  ];
-
   return (
-    <section id="expertise" className="bg-black py-24 lg:py-32">
-       <RevealOnScroll>
-          <div className="max-w-[1800px] mx-auto px-6 lg:px-12 mb-16">
-            <h2 className="text-xs font-sans text-white/50 uppercase tracking-[0.4em] mb-4">Áreas de Atuação</h2>
-            <div className="w-full h-[1px] bg-white/20"></div>
+    <section id="expertise" className="py-32 bg-black relative">
+      <div className="max-w-[1800px] mx-auto px-6 lg:px-12">
+        
+        <RevealOnScroll>
+          <div className="flex flex-col md:flex-row justify-between items-end mb-24 border-b border-white/10 pb-8">
+            <h2 className="text-4xl md:text-5xl font-serif text-white max-w-lg">
+              Expertise <span className="italic text-gray-500">Jurídica</span>
+            </h2>
+            <p className="text-gray-400 text-sm max-w-sm mt-6 md:mt-0 leading-relaxed">
+              Atuação técnica e estratégica para investidores e incorporadoras que não aceitam riscos desnecessários.
+            </p>
           </div>
-       </RevealOnScroll>
+        </RevealOnScroll>
 
-      <div className="flex flex-col border-t border-white/10">
-        {services.map((service, index) => (
-          <RevealOnScroll key={index} delay={index * 0.1}>
-            <ServiceItem {...service} />
-          </RevealOnScroll>
-        ))}
+        <div className="grid md:grid-cols-3 gap-12 lg:gap-20">
+          {services.map((service, index) => (
+            <RevealOnScroll key={index} delay={index * 0.2}>
+              <div className="group border-t border-white/10 pt-8 hover:border-gold transition-colors duration-500">
+                <div className="opacity-80 group-hover:opacity-100 transition-opacity">
+                   {service.icon}
+                </div>
+                <h3 className="text-2xl font-serif text-white mb-4 group-hover:text-gold transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-gray-500 text-sm leading-7 group-hover:text-gray-300 transition-colors">
+                  {service.description}
+                </p>
+              </div>
+            </RevealOnScroll>
+          ))}
+        </div>
+
       </div>
     </section>
   );

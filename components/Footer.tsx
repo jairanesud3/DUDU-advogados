@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-black py-20 border-t border-white/10">
+    <footer id="contato" className="bg-black py-20 border-t border-white/10">
       <div className="max-w-[1800px] mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between">
         
         {/* Logo */}
@@ -18,14 +18,17 @@ export const Footer: React.FC = () => {
         </div>
         
         {/* Simple Contact */}
-        <div className="flex items-center space-x-8">
+        <div className="flex flex-col md:flex-row items-center gap-4 md:space-x-8">
            <a 
-            href="#"
-            onClick={(e) => handleDemoClick(e, 'Enviar E-mail')}
+            href={`mailto:${CONTACT_INFO.email}`}
             className="text-xs font-sans text-gray-500 hover:text-white transition-colors uppercase tracking-widest border-b border-transparent hover:border-white pb-1"
            >
              {CONTACT_INFO.email}
            </a>
+           <span className="hidden md:inline text-gray-800">|</span>
+           <span className="text-xs font-sans text-gray-500 uppercase tracking-widest">
+             {CONTACT_INFO.address}
+           </span>
         </div>
 
       </div>

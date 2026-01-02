@@ -1,63 +1,67 @@
 import React from 'react';
 import { RevealOnScroll } from './RevealOnScroll';
+import { Button } from './Button';
+import { CONTACT_INFO } from '../constants';
 
 export const About: React.FC = () => {
   return (
-    <section id="marca" className="bg-almost-black w-full overflow-hidden">
-      <div className="grid lg:grid-cols-2 min-h-[90vh]">
-        
-        {/* Left: Photo (Always Color, No Grayscale Bug) */}
-        <div className="relative h-[500px] lg:h-auto w-full overflow-hidden">
-           <div className="absolute inset-0 bg-black/10 z-10"></div>
-           <img 
-              src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=2940&auto=format&fit=crop" 
-              alt="Dr. Victor Galvão" 
-              className="w-full h-full object-cover object-top transition-transform duration-[2000ms] hover:scale-105"
-           />
-           {/* Subtle overlay at bottom for name readability if needed, but keeping it clean */}
-        </div>
-
-        {/* Right: Text Content */}
-        <div className="flex items-center justify-center p-8 lg:p-24 bg-almost-black relative">
-           {/* Decorative Line */}
-           <div className="absolute top-0 left-0 w-full h-[1px] bg-white/5 lg:hidden"></div>
-           <div className="absolute top-0 left-0 h-full w-[1px] bg-white/5 hidden lg:block"></div>
-
-           <div className="max-w-xl">
-              <RevealOnScroll direction="right">
-                <p className="text-silver text-xs uppercase tracking-[0.4em] mb-6 flex items-center gap-4">
-                  <span className="w-8 h-[1px] bg-silver"></span>
-                  A Autoridade
-                </p>
-              </RevealOnScroll>
+    <section id="sobre" className="py-32 bg-almost-black">
+      <div className="max-w-[1800px] mx-auto px-6 lg:px-12">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
+          
+          <RevealOnScroll>
+            <div className="relative">
+              <div className="aspect-[3/4] w-full max-w-md mx-auto lg:ml-0 bg-gray-900 relative z-10 overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000">
+                 {/* Placeholder for Attorney Photo */}
+                 <img 
+                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop" 
+                   alt="Dr. Victor Galvão" 
+                   className="w-full h-full object-cover"
+                 />
+                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                 <div className="absolute bottom-8 left-8 text-white">
+                    <p className="font-serif text-2xl">Dr. Victor Galvão</p>
+                    <p className="text-xs uppercase tracking-widest text-gold mt-1">Sócio Fundador</p>
+                 </div>
+              </div>
               
-              <RevealOnScroll delay={0.2} direction="right">
-                <h2 className="text-4xl lg:text-5xl font-serif text-white leading-tight mb-8">
-                  Expertise em <br/>
-                  <span className="text-silver italic">Milhões Negociados.</span>
-                </h2>
-              </RevealOnScroll>
+              {/* Decorative Elements */}
+              <div className="absolute -top-10 -left-10 w-64 h-64 border border-white/5 z-0 hidden lg:block"></div>
+              <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-gold/5 z-0 hidden lg:block"></div>
+            </div>
+          </RevealOnScroll>
 
-              <RevealOnScroll delay={0.4} direction="right">
-                <div className="space-y-6 text-gray-400 font-sans font-light text-lg leading-relaxed">
-                  <p>
-                    Dr. Victor Galvão não é um advogado comum. É um estrategista patrimonial que atua nos bastidores das maiores transações do estado.
-                  </p>
-                  <p>
-                    Enquanto outros focam apenas na burocracia, nosso escritório foca na viabilidade financeira e na segurança jurídica absoluta. Garantimos que seu investimento não se torne um passivo.
-                  </p>
-                </div>
-              </RevealOnScroll>
-              
-              <RevealOnScroll delay={0.6} direction="right">
-                <div className="mt-10">
-                   <div className="h-[1px] w-full bg-white/10 mb-6"></div>
-                   <p className="font-serif italic text-white text-xl">"Risco Zero é a nossa meta."</p>
-                </div>
-              </RevealOnScroll>
-           </div>
+          <div className="lg:pl-10">
+            <RevealOnScroll delay={0.2}>
+              <h2 className="text-4xl md:text-5xl font-serif text-white mb-10 leading-tight">
+                Segurança jurídica para <br/>
+                <span className="italic text-gray-500">grandes negociações.</span>
+              </h2>
+            </RevealOnScroll>
+
+            <RevealOnScroll delay={0.3}>
+              <p className="text-gray-400 leading-relaxed mb-8 font-light text-lg">
+                Com uma trajetória marcada pela excelência e discrição, o escritório Victor Galvão atua exclusivamente na defesa de interesses patrimoniais de alto valor.
+              </p>
+              <p className="text-gray-400 leading-relaxed mb-12 font-light text-sm">
+                Entendemos que cada imóvel conta uma história e cada investimento carrega um legado. Nossa missão é blindar esse patrimônio através de estratégias jurídicas meticulosas, antecipando riscos que passariam despercebidos pelo olhar comum.
+              </p>
+            </RevealOnScroll>
+
+            <RevealOnScroll delay={0.4}>
+              <div className="flex items-center gap-8">
+                 <div className="border-l border-gold pl-6">
+                    <span className="block text-3xl font-serif text-white">12+</span>
+                    <span className="text-[10px] uppercase tracking-widest text-gray-500">Anos de Experiência</span>
+                 </div>
+                 <Button href={CONTACT_INFO.whatsapp} variant="outline">
+                   Conhecer o Escritório
+                 </Button>
+              </div>
+            </RevealOnScroll>
+          </div>
+
         </div>
-
       </div>
     </section>
   );
