@@ -2,9 +2,9 @@ import React from 'react';
 import { CONTACT_INFO } from '../constants';
 
 export const Footer: React.FC = () => {
-  const handleDemoClick = (e: React.MouseEvent, type: string) => {
+  const handleEmailClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    alert(`Demonstração: Link para ${type}`);
+    alert(`MODO DEMONSTRAÇÃO\n\nNo site real, este link abriria seu aplicativo de e-mail para enviar uma mensagem para:\n${CONTACT_INFO.email}`);
   };
 
   return (
@@ -21,7 +21,8 @@ export const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row items-center gap-4 md:space-x-8">
            <a 
             href={`mailto:${CONTACT_INFO.email}`}
-            className="text-xs font-sans text-gray-500 hover:text-white transition-colors uppercase tracking-widest border-b border-transparent hover:border-white pb-1"
+            onClick={handleEmailClick}
+            className="text-xs font-sans text-gray-500 hover:text-white transition-colors uppercase tracking-widest border-b border-transparent hover:border-white pb-1 cursor-pointer"
            >
              {CONTACT_INFO.email}
            </a>

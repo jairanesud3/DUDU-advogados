@@ -21,9 +21,25 @@ export const Button: React.FC<ButtonProps> = ({
 
   const classes = `${baseStyles} ${variants[variant]} ${className}`;
 
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // Se for um link interno (começa com #), deixa rolar normal
+    if (href && href.startsWith('#')) {
+      return;
+    }
+
+    // Se for externo (WhatsApp, http, etc), bloqueia e avisa
+    if (href) {
+      e.preventDefault();
+      const isWhatsApp = href.includes('wa.me') || href.includes('whatsapp');
+      const actionName = isWhatsApp ? "o WhatsApp" : "uma página externa";
+      
+      alert(`MODO DEMONSTRAÇÃO\n\nNo projeto real, este botão abriria ${actionName} para contato/agendamento.\n\n(Link destino: ${href})`);
+    }
+  };
+
   if (href) {
     return (
-      <a href={href} className={classes}>
+      <a href={href} className={classes} onClick={handleLinkClick}>
         {children}
       </a>
     );
