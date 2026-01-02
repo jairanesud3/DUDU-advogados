@@ -9,13 +9,12 @@ export const Stats: React.FC = () => {
           
           <RevealOnScroll>
              <div className="relative p-10 border border-white/5 hover:border-white/10 transition-colors duration-500 flex flex-col items-center justify-center">
-                {/* Flex container for perfect alignment */}
-                <div className="inline-flex items-start justify-center mb-4 leading-none">
+                {/* Usando items-baseline para alinhamento tipográfico perfeito na base */}
+                <div className="flex items-baseline justify-center mb-4 leading-none">
                   <span className="text-6xl md:text-8xl font-serif text-white tracking-tighter">
                      R$ 40
                   </span>
-                  {/* Adjusted top margin to align visually with the cap height of the numbers */}
-                  <span className="text-gold text-3xl md:text-5xl font-serif mt-2 ml-2">
+                  <span className="text-gold text-3xl md:text-5xl font-serif ml-2">
                      Mi
                   </span>
                 </div>
@@ -27,12 +26,11 @@ export const Stats: React.FC = () => {
 
           <RevealOnScroll delay={0.2}>
              <div className="relative p-10 border border-white/5 hover:border-white/10 transition-colors duration-500 flex flex-col items-center justify-center">
-                <div className="inline-flex items-start justify-center mb-4 leading-none">
+                <div className="flex items-baseline justify-center mb-4 leading-none">
                   <span className="text-6xl md:text-8xl font-serif text-white tracking-tighter">
                      150
                   </span>
-                  {/* Adjusted margin for the plus sign */}
-                  <span className="text-gold text-3xl md:text-5xl font-serif mt-1 ml-1">
+                  <span className="text-gold text-3xl md:text-5xl font-serif ml-1">
                      +
                   </span>
                 </div>

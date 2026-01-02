@@ -13,6 +13,9 @@
       tailwind.config = {
         theme: {
           extend: {
+            screens: {
+              'xl': '1280px', // Ensure explicit XL breakpoint
+            },
             colors: {
               obsidian: '#000000', // Absolute Black
               'almost-black': '#0a0a0a', // Layer 2 BG
@@ -44,10 +47,11 @@
   <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
+    "react": "https://esm.sh/react@18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+    "lucide-react": "https://esm.sh/lucide-react@0.263.1",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+    "react/": "https://esm.sh/react@^19.2.3/"
   }
 }
 </script>

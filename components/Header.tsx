@@ -29,7 +29,7 @@ export const Header: React.FC = () => {
         <div className="flex items-center justify-between">
           
           {/* Logo */}
-          <a href="#" className="z-50 group">
+          <a href="#" className="z-50 group relative">
             <h1 className="font-serif text-2xl text-white tracking-wide">
               VICTOR GALVÃO
             </h1>
@@ -38,8 +38,8 @@ export const Header: React.FC = () => {
             </p>
           </a>
 
-          {/* Desktop Menu */}
-          <nav className="hidden md:flex items-center space-x-12">
+          {/* Desktop Menu - Alterado para XL (1280px) para evitar colisão em laptops menores */}
+          <nav className="hidden xl:flex items-center space-x-10">
             {NAVIGATION_LINKS.map((link) => (
               <a 
                 key={link.label}
@@ -52,16 +52,17 @@ export const Header: React.FC = () => {
             <a 
               href="#"
               onClick={(e) => handleDemoAction(e, 'Agendar Consultoria (WhatsApp)')}
-              className="text-xs font-sans border border-white/30 px-6 py-2 text-white uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-500"
+              className="text-xs font-sans border border-white/30 px-8 py-3 text-white uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-500"
             >
               Consultoria
             </a>
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Visível em telas menores que XL */}
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-white z-50 p-2"
+            className="xl:hidden text-white z-50 p-2 hover:bg-white/10 rounded-full transition-colors"
+            aria-label="Menu"
           >
             {isMobileMenuOpen ? <X size={24} strokeWidth={1} /> : <Menu size={24} strokeWidth={1} />}
           </button>
@@ -70,12 +71,12 @@ export const Header: React.FC = () => {
 
       {/* Mobile Menu Fullscreen */}
       <div className={`fixed inset-0 bg-obsidian z-40 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
-        <div className="h-full flex flex-col items-center justify-center space-y-8">
+        <div className="h-full flex flex-col items-center justify-center space-y-8 p-4">
           {NAVIGATION_LINKS.map((link) => (
             <a 
               key={link.label}
               href={link.href}
-              className="font-serif text-3xl text-white hover:text-silver transition-colors"
+              className="font-serif text-3xl text-white hover:text-silver transition-colors text-center"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.label}
