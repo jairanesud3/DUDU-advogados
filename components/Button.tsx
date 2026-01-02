@@ -12,7 +12,7 @@ export const Button: React.FC<ButtonProps> = ({
   className = '',
   ...props 
 }) => {
-  const baseStyles = "inline-flex items-center justify-center px-10 py-4 text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-500";
+  const baseStyles = "inline-flex items-center justify-center px-10 py-4 text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-500 cursor-pointer";
   
   const variants = {
     primary: "bg-white text-black hover:bg-gold hover:text-black border border-transparent",
@@ -22,12 +22,26 @@ export const Button: React.FC<ButtonProps> = ({
   const classes = `${baseStyles} ${variants[variant]} ${className}`;
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    // Se for um link interno (começa com #), deixa rolar normal
+    // 1. Link Interno (Rolagem Suave)
     if (href && href.startsWith('#')) {
+      e.preventDefault();
+      const targetId = href.replace('#', '');
+      const element = document.getElementById(targetId);
+      
+      if (element) {
+        const headerOffset = 100; // Espaço para o header fixo
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
       return;
     }
 
-    // Se for externo (WhatsApp, http, etc), bloqueia e avisa
+    // 2. Link Externo (Alerta de Demonstração)
     if (href) {
       e.preventDefault();
       const isWhatsApp = href.includes('wa.me') || href.includes('whatsapp');

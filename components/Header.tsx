@@ -19,15 +19,34 @@ export const Header: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // Função para rolagem suave controlada
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+
+    if (element) {
+      const headerOffset = 80; // Ajuste fino para o header não cobrir o título
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <header 
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-700 ${
-        isScrolled || isMobileMenuOpen ? 'bg-black/80 backdrop-blur-md border-b border-white/5 py-4' : 'bg-transparent py-8'
+        isScrolled || isMobileMenuOpen ? 'bg-black/90 backdrop-blur-md border-b border-white/5 py-4' : 'bg-transparent py-8'
       }`}
     >
       <div className="max-w-[1800px] mx-auto px-6 lg:px-12 flex items-center justify-between">
         
-        {/* Logo - Transformado em div/button para não recarregar a página */}
+        {/* Logo Seguro */}
         <div onClick={handleLogoClick} className="flex flex-col group z-50 cursor-pointer select-none">
           <span className="font-serif text-2xl text-white tracking-wide group-hover:text-gold transition-colors duration-500">
             VICTOR GALVÃO
@@ -37,13 +56,14 @@ export const Header: React.FC = () => {
           </span>
         </div>
 
-        {/* Desktop Menu - Only visible on XL screens */}
+        {/* Desktop Menu */}
         <nav className="hidden xl:flex items-center space-x-12">
           {NAVIGATION_LINKS.map((link) => (
             <a 
               key={link.label}
               href={link.href} 
-              className="text-xs font-medium text-gray-400 hover:text-white uppercase tracking-[0.15em] transition-colors duration-300"
+              onClick={(e) => handleNavClick(e, link.href)}
+              className="text-xs font-medium text-gray-400 hover:text-white uppercase tracking-[0.15em] transition-colors duration-300 cursor-pointer"
             >
               {link.label}
             </a>
@@ -71,8 +91,8 @@ export const Header: React.FC = () => {
             <a 
               key={link.label}
               href={link.href}
-              className="text-2xl font-serif text-white hover:text-gold transition-colors"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={(e) => handleNavClick(e, link.href)}
+              className="text-2xl font-serif text-white hover:text-gold transition-colors cursor-pointer"
             >
               {link.label}
             </a>
