@@ -4,18 +4,20 @@ import { Hero } from './components/Hero';
 import { Services } from './components/Services';
 import { About } from './components/About';
 import { Stats } from './components/Stats';
+import { Testimonials } from './components/Testimonials';
 import { Footer } from './components/Footer';
 import { FloatingWhatsapp } from './components/FloatingWhatsapp';
 
 function App() {
   return (
-    <div className="bg-obsidian min-h-screen text-white font-sans selection:bg-white selection:text-black">
+    <div className="bg-obsidian min-h-screen text-white font-sans selection:bg-gold selection:text-black">
       <Header />
       <main>
         <Hero />
         <About />
         <Services />
         <Stats />
+        <Testimonials />
       </main>
       <Footer />
       <FloatingWhatsapp />
