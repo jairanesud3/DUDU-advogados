@@ -11,12 +11,12 @@ export const About: React.FC = () => {
           
           <RevealOnScroll>
             <div className="relative">
-              <div className="aspect-[3/4] w-full max-w-md mx-auto lg:ml-0 bg-gray-900 relative z-10 overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000">
-                 {/* Placeholder for Attorney Photo */}
+              <div className="aspect-[3/4] w-full max-w-md mx-auto lg:ml-0 bg-gray-900 relative z-10 overflow-hidden border border-white/5 group">
+                 {/* Foto sempre colorida com zoom suave ao interagir */}
                  <img 
                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop" 
                    alt="Dr. Victor Galvão" 
-                   className="w-full h-full object-cover"
+                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                  />
                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                  <div className="absolute bottom-8 left-8 text-white">
