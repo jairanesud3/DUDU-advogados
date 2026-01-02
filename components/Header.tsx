@@ -15,6 +15,10 @@ export const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleLogoClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <header 
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-700 ${
@@ -23,15 +27,15 @@ export const Header: React.FC = () => {
     >
       <div className="max-w-[1800px] mx-auto px-6 lg:px-12 flex items-center justify-between">
         
-        {/* Logo */}
-        <a href="#" className="flex flex-col group z-50">
+        {/* Logo - Transformado em div/button para não recarregar a página */}
+        <div onClick={handleLogoClick} className="flex flex-col group z-50 cursor-pointer select-none">
           <span className="font-serif text-2xl text-white tracking-wide group-hover:text-gold transition-colors duration-500">
             VICTOR GALVÃO
           </span>
           <span className="text-[10px] text-gray-400 font-sans uppercase tracking-[0.3em] group-hover:text-white transition-colors duration-500">
             Advocacia
           </span>
-        </a>
+        </div>
 
         {/* Desktop Menu - Only visible on XL screens */}
         <nav className="hidden xl:flex items-center space-x-12">
